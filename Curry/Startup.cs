@@ -12,6 +12,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Curry.DataAccess.Data;
+using Curry.DataAccess;
 
 namespace Curry
 {
