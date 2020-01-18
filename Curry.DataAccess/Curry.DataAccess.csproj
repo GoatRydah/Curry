@@ -15,4 +15,8 @@
     <Folder Include="Migrations\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Curry.Models\Curry.Models.csproj" />
+  </ItemGroup>
+
 </Project>
