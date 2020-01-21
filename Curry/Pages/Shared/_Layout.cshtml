@@ -3,15 +3,18 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Curry</title>
+    <title>@ViewData["Title"] - Curry in a Hurry</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/lib/font-awesome/css/all.css" />
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-danger border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">Curry</a>
+                <a class="navbar-brand" asp-area="" asp-page="/Index">
+                    <img src="~/images/logo.png" alt="Curry Logo" />
+                </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -19,11 +22,25 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <partial name="_LoginPartial" />
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link text-white dropdown-toggle" href="#" id="navbarDropDown" data-toggle="dropdown">
+                                Admin
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item text-black" asp-page="/Admin/Category/Index">Catetgory</a>
+                                <a class="dropdown-item text-black" asp-page="/Admin/FoodType/Index">Food Type</a>
+                                <a class="dropdown-item text-black" asp-page="/Admin/MenuItem/Index">Menu Item</a>
+                                <a class="dropdown-item text-black" asp-page="/Admin/User/Index">User</a>
+                            </div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
+                            <a class="nav-link text-white" asp-page="/Admin/Order/ManageOrder">Manage Orders</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-page="/Admin/Order/OrderList">Order Deliveries</a>
+                        </li>
+                        <li>
+                            <a class="nav-link text-white" asp-page="/Customer/Cart/Index"><i class="fas fa-shopping-cart">&nbsp; (0)</i></a>
                         </li>
                     </ul>
                 </div>
@@ -36,9 +53,9 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="border-top footer text-white bg-danger">
         <div class="container">
-            &copy; 2020 - Curry - <a asp-area="" asp-page="/Privacy">Privacy</a>
+            &copy; 2020 - Curry in a Hurry - <a asp-area="" asp-page="/Privacy">Privacy</a>
         </div>
     </footer>
 

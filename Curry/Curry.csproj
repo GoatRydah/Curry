@@ -21,4 +21,12 @@
     <ProjectReference Include="..\Curry.Models\Curry.Models.csproj" />
   </ItemGroup>
 
+
+  <ItemGroup>
+    <Folder Include="Pages\Admin\Users\" />
+    <Folder Include="Pages\Admin\Category\" />
+    <Folder Include="Pages\Admin\FoodType\" />
+    <Folder Include="Pages\Admin\MenuItems\" />
+  </ItemGroup>
+
 </Project>
