@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Curry.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200118175336_IdentityAndCategory")]
-    partial class IdentityAndCategory
+    [Migration("20200123051102_DicksonCurry")]
+    partial class DicksonCurry
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

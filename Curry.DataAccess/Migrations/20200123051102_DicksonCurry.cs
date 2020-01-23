@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Curry.DataAccess.Migrations
 {
-    public partial class IdentityAndCategory : Migration
+    public partial class DicksonCurry : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
