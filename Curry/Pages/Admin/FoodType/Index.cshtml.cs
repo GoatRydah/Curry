@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Curry.Pages.Admin.Category
+namespace Curry.Pages.Admin.FoodType
 {
     public class IndexModel : PageModel
     {

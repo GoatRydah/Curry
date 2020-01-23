@@ -1,10 +1,10 @@
 ﻿@page
-@model Curry.Pages.Admin.Category.IndexModel
+@model Curry.Pages.Admin.FoodType.IndexModel
 
     <div class="bg-white container border">
         <div class="row">
             <div class="col-md-6">
-                <h2 class="text-primary">Category List</h2>
+                <h2 class="text-primary">Food Type List</h2>
             </div>
             <div class="col-md-6 text-right">
                 <a asp-page="upsert" class="btn btn-primary m-3"><i class="fas fa-plus"></i>&nbsp;Create New</a>
@@ -15,7 +15,6 @@
                    <thead>
                        <tr>
                            <th>Category Name</th>
-                           <th>Display Order</th>
                            <th></th>
                        </tr>
                    </thead>
@@ -23,5 +22,5 @@
     </div>
 
 @section Scripts {
-<script src="~/js/category.js"></script>
+<script src="~/js/foodType.js"></script>
 }
