@@ -33,5 +33,23 @@ namespace Curry
 
             return Page();
         }
+
+        public IActionResult OnPost()
+        {
+            if (!ModelState.IsValid)
+                return Page();
+
+            if (CategoryObj.Id == 0) //New Category
+            {
+                _unitOfWork.Category.Add(CategoryObj);
+            }
+            else //edit
+            {
+                _unitOfWork.Category.Update(CategoryObj);
+            }
+
+            _unitOfWork.Save();
+            return RedirectToPage("./Index");
+        }
     }
 }
