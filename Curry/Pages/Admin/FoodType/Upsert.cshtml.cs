@@ -6,7 +6,7 @@ using Curry.DataAccess.Data.Repository.IRepository;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Curry.Pages.Admin.Category
+namespace Curry.Pages.Admin.FoodType
 {
     public class UpsertModel : PageModel
     {
@@ -18,16 +18,16 @@ namespace Curry.Pages.Admin.Category
         }
 
         [BindProperty]
-        public Models.Category CategoryObj { get; set; }
+        public Models.FoodType FoodTypeObj { get; set; }
 
         public IActionResult OnGet(int? id)
         {
-            CategoryObj = new Models.Category();
+            FoodTypeObj = new Models.FoodType();
 
             if (id != null) //editing
             {
-                CategoryObj = _unitOfWork.Category.GetFirstOrDefault(u => u.Id == id);
-                if (CategoryObj == null)
+                FoodTypeObj = _unitOfWork.FoodType.GetFirstOrDefault(u => u.Id == id);
+                if (FoodTypeObj == null)
                     return NotFound();
             } //creating handled on post method
 
@@ -39,13 +39,13 @@ namespace Curry.Pages.Admin.Category
             if (!ModelState.IsValid)
                 return Page();
 
-            if (CategoryObj.Id == 0) //New Category
+            if (FoodTypeObj.Id == 0) //New Food Type
             {
-                _unitOfWork.Category.Add(CategoryObj);
+                _unitOfWork.FoodType.Add(FoodTypeObj);
             }
             else //edit
             {
-                _unitOfWork.Category.Update(CategoryObj);
+                _unitOfWork.FoodType.Update(FoodTypeObj);
             }
 
             _unitOfWork.Save();

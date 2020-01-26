@@ -10,7 +10,7 @@ namespace Curry.Models
         [Key]
         public int Id { get; set; }
         [Required]
-        [Display(Name = "Category Name")]
+        [Display(Name = "Food Type Name")]
         public string Name { get; set; }
     }
 }
