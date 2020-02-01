@@ -13,14 +13,14 @@ function LoadList() {
         },
         "columns": [
             { "data": "name", "width": "25%" },
-            { "data": "price", "width": "15%" },
+            { "data": "price", render: $.fn.dataTable.render.number(',', '.', 2, '$'), "width": "15%" },
             { "data": "category.name", "width": "15%" },
             { "data": "foodType.name", "width": "15%" },
             {
                 "data": "id",
                 "render": function (data) {
                     return ` <div class="text-center">
-                                <a href="/Admin/menuitem/upsert?id=${data}" class="btn btn-success text-white" style="cursor:pointer; width:100px;">
+                                <a href="/Admin/MenuItems/Upsert?id=${data}" class="btn btn-success text-white" style="cursor:pointer; width:100px;">
                                     <i class="far fa-edit"></i> Edit
                                 </a>
                                 <a class="btn btn-danger text-white" style="cursor:pointer; width:100px;" onClick=Delete('/api/menuitem/'+${data})>

@@ -26,6 +26,7 @@
 
   <ItemGroup>
     <Folder Include="Pages\Admin\Users\" />
+    <Folder Include="wwwroot\images\MenuItems\" />
   </ItemGroup>
 
 </Project>
