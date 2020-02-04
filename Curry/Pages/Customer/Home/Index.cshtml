@@ -20,8 +20,8 @@
                                     <div class="card" style="border: 2px solid #008cba; border-radius: 5px;">
                                         <div class="pl-3 pt-1 text-center h3"><h3 class="card-title text-primary"><b>@menuitem.Name</b></h3></div>
                                         <div class="d-flex justify-content-between form-control" style="border:0px;">
-                                            <div class=" col-md-6 badge-warning text-center" style="font-size:14px;">@menuitem.Category.Name</div>
-                                            <div class="col-md-6 text-right h4" style="color:maroon;"><b>$@menuitem.Price.ToString("0.00")</b></div>
+                                            <div class="col-md-6 badge-warning text-center" style="font-size:12px;"><b>@menuitem.Category.Name</b></div>
+                                            <div class="col-md-6 text-right h5" style="color:maroon;"><b>$@menuitem.Price.ToString("0.00")</b></div>
                                         </div>
                                         <img src="@menuitem.Image" class="card-img-top p-2 rounded" />
                                         <a asp-page="Details" class="btn btn-primary" style="border-radius:2px;" asp-route-id="@menuitem.Id">Details</a>
