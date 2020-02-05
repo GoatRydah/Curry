@@ -97,9 +97,19 @@ namespace Curry.Areas.Identity.Pages.Account
                     PhoneNumber = Input.PhoneNumber
                 };
                 var result = await _userManager.CreateAsync(user, Input.Password);
+
+                //Add the role as well
+                if (!await _roleManager.RoleExistsAsync(SD.ManagerRole))
+                {
+                    _roleManager.CreateAsync(new IdentityRole(SD.ManagerRole)).GetAwaiter().GetResult();
+                    _roleManager.CreateAsync(new IdentityRole(SD.KitchenRole)).GetAwaiter().GetResult();
+                    _roleManager.CreateAsync(new IdentityRole(SD.DriverRole)).GetAwaiter().GetResult();
+                    _roleManager.CreateAsync(new IdentityRole(SD.CustomerRole)).GetAwaiter().GetResult();
+                }
+
                 if (result.Succeeded)
                 {
-                    //Add the role as well
+                    
                     if (role == SD.KitchenRole)
                     {
                         await _userManager.AddToRoleAsync(user, SD.KitchenRole);
@@ -118,7 +128,7 @@ namespace Curry.Areas.Identity.Pages.Account
                             }
                             else
                             {
-                                await _userManager.AddToRoleAsync(user, SD.ManagerRole);
+                                await _userManager.AddToRoleAsync(user, SD.CustomerRole);
                             }
                         }
                     }
