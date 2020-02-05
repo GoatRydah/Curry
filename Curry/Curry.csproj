@@ -21,6 +21,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Curry.DataAccess\Curry.DataAccess.csproj" />
     <ProjectReference Include="..\Curry.Models\Curry.Models.csproj" />
+    <ProjectReference Include="..\Curry.Utilities\Curry.Utility.csproj" />
   </ItemGroup>
 
 
