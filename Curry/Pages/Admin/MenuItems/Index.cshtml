@@ -1,6 +1,7 @@
 ﻿@page
-@model Curry.Pages.Admin.Category.IndexModel
-
+@using Curry.Utility
+@if (User.IsInRole(SD.ManagerRole))
+{
 <div class="bg-white container border">
     <div class="row">
         <div class="col-md-6">
@@ -23,7 +24,13 @@
         </thead>
     </table>
 </div>
-
+}
+else
+{
+    <div>
+        <h1 class="danger">Access Denied</h1>
+    </div>
+}
 @section Scripts {
     <script src="~/js/menuitem.js"></script>
 }
