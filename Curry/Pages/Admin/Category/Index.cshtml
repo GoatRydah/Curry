@@ -1,6 +1,9 @@
 ﻿@page
 @model Curry.Pages.Admin.Category.IndexModel
 
+@using Curry.Utility
+@if (User.IsInRole(SD.ManagerRole))
+{
     <div class="bg-white container border">
         <div class="row">
             <div class="col-md-6">
@@ -11,17 +14,23 @@
             </div>
         </div>
         <br /> <br />
-               <table id="DT_Load" class="table table-striped table-bordered" style="width:100%">
-                   <thead>
-                       <tr>
-                           <th>Category Name</th>
-                           <th>Display Order</th>
-                           <th></th>
-                       </tr>
-                   </thead>
-               </table>
+        <table id="DT_Load" class="table table-striped table-bordered" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Category Name</th>
+                    <th>Display Order</th>
+                    <th></th>
+                </tr>
+            </thead>
+        </table>
     </div>
-
+}
+else
+{
+    <div>
+        <h1 class="danger">Access Denied</h1>
+    </div>
+}
 @section Scripts {
-<script src="~/js/category.js"></script>
+    <script src="~/js/category.js"></script>
 }

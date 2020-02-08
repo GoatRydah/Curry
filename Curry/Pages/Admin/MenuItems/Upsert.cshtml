@@ -1,6 +1,9 @@
 ﻿@page
 @model Curry.Pages.Admin.MenuItems.UpsertModel
 
+@using Curry.Utility
+@if (User.IsInRole(SD.ManagerRole))
+{
     <form method="post" asp-action="Upsert" enctype="multipart/form-data">
         <div class="container">
             <div class="row px-2 mx-2 bg-white border">
@@ -91,22 +94,28 @@
                         </div>
                     </div>
                 </div>
-                @if(Model.MenuItemObj.menuItem.Image != null)
+                @if (Model.MenuItemObj.menuItem.Image != null)
                 {
                     <div class="col-md-4 p-4">
-                        <img src="@Model.MenuItemObj.menuItem.Image" width="100%" style="border-radius:5px; border:1px solid #bbb9b9;"/>
+                        <img src="@Model.MenuItemObj.menuItem.Image" width="100%" style="border-radius:5px; border:1px solid #bbb9b9;" />
                     </div>
                 }
             </div>
         </div>
     </form>
-
-    @section scripts{
-        <script>
-            tinymce.init({
-                selector: 'textarea',
-                plugins: 'lists',
-                menubart: 'file edit format'
-            });
-        </script>
-   }
+}
+else
+{
+    <div>
+        <h1 class="danger">Access Denied</h1>
+    </div>
+}
+@section scripts{
+    <script>
+        tinymce.init({
+            selector: 'textarea',
+            plugins: 'lists',
+            menubart: 'file edit format'
+        });
+    </script>
+}
