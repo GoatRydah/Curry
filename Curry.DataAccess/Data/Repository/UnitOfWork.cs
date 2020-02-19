@@ -12,7 +12,7 @@ namespace Curry.DataAccess.Data.Repository
         public IFoodTypeRepository FoodType { get; private set; }
         public IMenuItemRepository MenuItem { get; private set; }
         public IApplicatioinUserRepository ApplicationUser { get; private set; }
-        public IShoppingCartRepository Shoppingcart { get; private set; }
+        public IShoppingCartRepository ShoppingCart { get; private set; }
 
         //Grabs a connection to the actual db to connect to this class
         public UnitOfWork(ApplicationDbContext db)
@@ -22,8 +22,8 @@ namespace Curry.DataAccess.Data.Repository
             FoodType = new FoodTypeRepository(_db);
             MenuItem = new MenuItemRepository(_db);
             ApplicationUser = new ApplicationUserRepository(_db);
-            Shoppingcart = new ShoppingCartRepository(_db);
-            Shoppingcart = new ShoppingCartRepository(_db);
+            ShoppingCart = new ShoppingCartRepository(_db);
+            //Shoppingcart = new ShoppingCartRepository(_db);
         }
 
 
