@@ -1,5 +1,6 @@
 ﻿@page
 @model Curry.Pages.Customer.Home.DetailsModel
+@using Curry.Utility
 @{
     ViewData["Title"] = "Details";
 }
@@ -56,9 +57,18 @@
                         <div class="col-12 col-md-6 pb-1 ">
                             <a asp-page="Index" class="btn btn-success btn-square form-control btn-lg" style="height:50px;">Back to List</a>
                         </div>
-                        <div class="col-12 col-md-6 ">
-                            <button type="submit" class="btn btn-primary btn-square form-control btn-lg" style="height:50px;">Add to Cart</button>
-                        </div>
+                        @if (User.IsInRole(SD.ManagerRole) || User.IsInRole(SD.KitchenRole) || User.IsInRole(SD.DriverRole) || User.IsInRole(SD.CustomerRole))
+                        {
+                            <div class="col-12 col-md-6 ">
+                                <button type="submit" class="btn btn-primary btn-square form-control btn-lg" style="height:50px;">Add to Cart</button>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="col-12 col-md-6 ">
+                                <button type="submit" class="btn btn-primary btn-square form-control btn-lg" style="height:50px;" disabled>Please Login to Add to Cart</button>
+                            </div>
+                        }
                     </div>
                 </div>
             </div>

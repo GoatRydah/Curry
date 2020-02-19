@@ -40,6 +40,8 @@ namespace Curry
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             //services.AddSingleton<IEmailSender, EmailSender>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddMvc(options => options.EnableEndpointRouting = false)
+                .SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_3_0);
             services.AddSession(options =>
             {
                 options.IdleTimeout = TimeSpan.FromMinutes(10);
@@ -47,8 +49,6 @@ namespace Curry
                 options.Cookie.IsEssential = true;
 
             });
-            services.AddMvc(options => options.EnableEndpointRouting = false)
-                .SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_3_0);
             services.AddRazorPages().AddRazorRuntimeCompilation();
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
         }
@@ -70,6 +70,7 @@ namespace Curry
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseSession();
 
             app.UseRouting();
 
@@ -77,7 +78,6 @@ namespace Curry
             app.UseAuthorization();
 
             app.UseMvc();
-            app.UseSession();
         }
     }
 }

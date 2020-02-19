@@ -13,6 +13,8 @@ namespace Curry.DataAccess.Data.Repository.IRepository
         IMenuItemRepository MenuItem { get; }
         IApplicatioinUserRepository ApplicationUser { get; }
         IShoppingCartRepository ShoppingCart { get; }
+        IOrderHeaderRepository OrderHeader { get; }
+        IOrderDetailsRepository OrderDetails { get; }
 
         void Save();
     }

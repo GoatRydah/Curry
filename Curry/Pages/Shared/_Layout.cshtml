@@ -1,4 +1,6 @@
 ﻿@using Curry.Utility
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContentAccessor
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -53,9 +55,26 @@
                                 <a class="nav-link text-white" asp-page="/Admin/Order/OrderList">Order Deliveries</a>
                             </li>
                         }
-                        <li>
-                            <a class="nav-link text-white" asp-page="/Customer/Cart/Index"><i class="fas fa-shopping-cart">&nbsp; (0)</i></a>
-                        </li>
+
+                        @if (HttpContentAccessor.HttpContext.Session.GetInt32(SD.ShoppingCart) != null)
+                        {
+
+                            <li>
+                                <a class="nav-link text-white" asp-page="/Customer/Cart/Index">
+                                    @{ var count = HttpContentAccessor.HttpContext.Session.GetInt32(SD.ShoppingCart); }
+                                    <i class="fas fa-shopping-cart"></i>&nbsp;(@count)
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li>
+                                <a class="nav-link text-white" asp-page="/Customer/Cart/Index">
+                                    <i class="fas fa-shopping-cart"></i>&nbsp; (0)
+                                </a>
+                            </li>
+                        }
+
                     </ul>
                 </div>
             </div>

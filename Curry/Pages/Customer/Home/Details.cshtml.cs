@@ -6,9 +6,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Curry.DataAccess.Data.Repository.IRepository;
 using Curry.Models;
+using Curry.Utility;
+using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Http;
-using Curry.Utility;
 
 namespace Curry.Pages.Customer.Home
 {
