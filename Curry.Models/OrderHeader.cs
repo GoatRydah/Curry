@@ -34,6 +34,6 @@ namespace Curry.Models
         public string DeliveryName { get; set; }
         [Display(Name = "Phone Number")]
         public string PhoneNumber { get; set; }
-        public int TransactionId { get; set; }
+        public string TransactionId { get; set; }
     }
 }
