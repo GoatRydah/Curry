@@ -13,11 +13,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Curry.Pages.Customer.Cart
 {
-    public class IndexModel : PageModel
+    public class SummaryModel : PageModel
     {
         public readonly IUnitOfWork _unitOfWork;
 
-        public IndexModel(IUnitOfWork unitOfWork)
+        public SummaryModel(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
@@ -50,12 +50,20 @@ namespace Curry.Pages.Customer.Cart
                     item.MenuItem = _unitOfWork.MenuItem.GetFirstOrDefault(m => m.Id == item.MenuItemId);
                     OrderDetailsCartVM.OrderHeader.OrderTotal += (item.MenuItem.Price * item.Count);
                 }
+
+                //add sales tax to value
+                OrderDetailsCartVM.OrderHeader.OrderTotal += OrderDetailsCartVM.OrderHeader.OrderTotal * SD.SalesTaxPercent;
+
+                ApplicationUser applicationUser = _unitOfWork.ApplicationUser.GetFirstOrDefault(c => c.Id == claim.Value);
+                OrderDetailsCartVM.OrderHeader.DeliveryName = applicationUser.FullName;
+                OrderDetailsCartVM.OrderHeader.DeliveryTime = DateTime.Now;
+                OrderDetailsCartVM.OrderHeader.PhoneNumber = applicationUser.PhoneNumber;
             }
         }
 
         public IActionResult OnPostPlus(int cartId)
         {
-            var cart = _unitOfWork.ShoppingCart.GetFirstOrDefault( c => c.Id == cartId);
+            var cart = _unitOfWork.ShoppingCart.GetFirstOrDefault(c => c.Id == cartId);
             _unitOfWork.ShoppingCart.IncrementCount(cart, 1);
             _unitOfWork.Save();
             return RedirectToPage("/Customer/Cart/Index");
@@ -65,7 +73,7 @@ namespace Curry.Pages.Customer.Cart
         {
             var cart = _unitOfWork.ShoppingCart.GetFirstOrDefault(c => c.Id == cartId);
 
-            if(cart.Count == 1)
+            if (cart.Count == 1)
             {
                 _unitOfWork.ShoppingCart.Remove(cart);
                 _unitOfWork.Save();

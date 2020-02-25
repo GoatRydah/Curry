@@ -12,5 +12,7 @@ namespace Curry.Utility
         public const string KitchenRole = "Kitchen";
         public const string CustomerRole = "Customer";
         public const string ShoppingCart = "ShoppingCart";
+        public const float SalesTaxPercent = 0.0825f;
+        public const float SalesTaxRate = 8.25f;
     }
 }
