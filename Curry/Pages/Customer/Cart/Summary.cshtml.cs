@@ -63,7 +63,7 @@ namespace Curry.Pages.Customer.Cart
             }
         }
 
-        public IActionResult OnPost(string StripeToken)
+        public IActionResult OnPost(string stripeToken)
         {
             var ClaimsIdentity = (ClaimsIdentity)User.Identity;
             var Claim = ClaimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
@@ -99,7 +99,7 @@ namespace Curry.Pages.Customer.Cart
             HttpContext.Session.SetInt32(SD.ShoppingCart, 0);
             _unitOfWork.Save();
 
-            if (StripeToken != null)
+            if (stripeToken != null)
             {
                 var options = new ChargeCreateOptions
                 {
@@ -107,7 +107,7 @@ namespace Curry.Pages.Customer.Cart
                     Amount = Convert.ToInt32(OrderDetailsCartVM.OrderHeader.OrderTotal * 100 * SD.SalesTaxRate),
                     Currency = "usd",
                     Description = "Order ID : " + OrderDetailsCartVM.OrderHeader.Id,
-                    Source = StripeToken
+                    Source = stripeToken
                 };
 
                 var service = new ChargeService();
